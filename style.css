@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header {
+    padding: 20px;
+    background-color: #1c1c1c;
+}
+
+.header-content h1 {
+    font-size: 2rem;
+    display: inline-block;
+}
+
+.price {
+    font-size: 2.5rem;
+    margin-left: 20px;
+    color: #e3e3e3;
+}
+
+.price-change {
+    color: red;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+    color: #999999;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.chart-section {
+    width: 70%;
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.buy-section {
+    width: 25%;
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #333333;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.buy-btn {
+    background-color: #f8d210;
+    padding: 10px;
+    border: none;
+    color: #121212;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #ffdb4d;
+}

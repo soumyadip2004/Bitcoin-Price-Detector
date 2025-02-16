@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price Predictor - Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3a7bd5;
+            --secondary-color: #00d2ff;
+            --accent-color: #f7931a;
+            --dark-bg: #0a0f1a;
+            --card-bg: rgba(16, 23, 42, 0.98);
+            --text-primary: #ffffff;
+            --text-secondary: #b4bcd0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(58, 123, 213, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.05) 0%, transparent 20%);
+            background-attachment: fixed;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .auth-left {
+            flex: 1;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .auth-right {
+            flex: 1;
+        }
+
+        @media (min-width: 992px) {
+            .auth-left {
+                display: flex;
+            }
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .feature-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            transition: color 0.3s ease;
+        }
+
+        .input-group input:focus + i {
+            color: var(--primary-color);
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 15px rgba(58, 123, 213, 0.1);
+        }
+
+        input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 123, 213, 0.3);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        button:hover::after {
+            left: 100%;
+        }
+
+        .social-login {
+            margin-top: 30px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .divider span {
+            padding: 0 10px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-switch a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .auth-switch a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                padding: 10px;
+            }
+
+            .auth-card {
+                padding: 20px;
+            }
+
+            .social-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .strength-meter {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .strength-meter div {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .weak { background: #ef4444; }
+        .medium { background: #f59e0b; }
+        .strong { background: #10b981; }
+
+        /* Add dialog styles */
+        .confirm-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .confirm-content {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .ok-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left side with features -->
+        <div class="auth-left">
+            <div class="features">
+                <h2>Why Choose Us?</h2>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Real-time Analytics</h3>
+                            <p>Track Bitcoin prices and trends in real-time</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>AI Predictions</h3>
+                            <p>Advanced AI-powered price predictions</p>
+                        </div>
+                    </li>
+                    <li class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Secure Platform</h3>
+                            <p>Enterprise-grade security for your data</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right side with auth forms -->
+        <div class="auth-right">
+            <div class="auth-card">
+                <div class="logo-container">
+                    <img src="bitcoin.jpeg" alt="Logo" class="logo">
+                </div>
+                
+                <div id="loginForm">
+                    <h1>Welcome Back</h1>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="input-group">
+                            <input type="text" id="username" placeholder="Username" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="password" placeholder="Password" required>
+                            <i class="fas fa-lock"></i>
+                            <i class="fas fa-eye password-toggle"></i>
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+
+                    <div class="social-login">
+                        <div class="divider">
+                            <span>Or continue with</span>
+                        </div>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button class="social-btn facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="social-btn github">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="auth-switch">
+                        <a href="#" id="showRegister">Don't have an account? Register</a>
+                    </div>
+                </div>
+
+                <div id="registerForm" style="display: none;">
+                    <h1>Create Account</h1>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" placeholder="Full Name" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" placeholder="Email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" placeholder="Phone Number" pattern="[0-9]{10}" required>
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="date" required>
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" placeholder="Choose Username" required>
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" placeholder="Choose Password" required>
+                            <i class="fas fa-lock"></i>
+                            <i class="fas fa-eye password-toggle"></i>
+                            <div class="strength-meter">
+                                <div></div>
+                            </div>
+                        </div>
+                        <button type="submit">Register</button>
+                    </form>
+
+                    <div class="auth-switch">
+                        <a href="#" id="showLogin">Already have an account? Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add script reference -->
+    <script src="script.js"></script>
+
+    <script>
+        // Form switching
+        document.getElementById('showRegister').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        });
+
+        document.getElementById('showLogin').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+        });
+
+        // Password visibility toggle
+        document.querySelectorAll('.password-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const input = toggle.previousElementSibling.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    toggle.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    toggle.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+        });
+
+        // Password strength meter
+        document.querySelector('#registerForm input[type="password"]').addEventListener('input', function() {
+            const strength = calculatePasswordStrength(this.value);
+            const meter = this.nextElementSibling.nextElementSibling.nextElementSibling.querySelector('div');
+            
+            meter.className = '';
+            if (strength > 80) {
+                meter.classList.add('strong');
+                meter.style.width = '100%';
+            } else if (strength > 50) {
+                meter.classList.add('medium');
+                meter.style.width = '66%';
+            } else if (strength > 30) {
+                meter.classList.add('weak');
+                meter.style.width = '33%';
+            } else {
+                meter.style.width = '0';
+            }
+        });
+
+        function calculatePasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength += 20;
+            if (password.match(/[a-z]+/)) strength += 20;
+            if (password.match(/[A-Z]+/)) strength += 20;
+            if (password.match(/[0-9]+/)) strength += 20;
+            if (password.match(/[!@#$%^&*]+/)) strength += 20;
+            return strength;
+        }
+    </script>
+</body>
+</html>
